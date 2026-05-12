@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>教育行业近半年跟进回顾 · 教育行业 2026 Q2 Workshop</title>
+<link rel="stylesheet" href="./assets/style.css">
+<style>
+/* KPI 3 数 */
+.kpi-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-top: 4px;
+}
+.kpi-card {
+  padding: 22px 24px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #285EF6 0%, #1A4CD8 100%);
+  color: #fff;
+}
+.kpi-card .kpi-label {
+  font-size: 13px;
+  color: rgba(255,255,255,0.78);
+  margin-bottom: 8px;
+  font-weight: 500;
+}
+.kpi-card .kpi-num {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+.kpi-card .kpi-num .unit {
+  font-size: 14px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.7);
+  margin-left: 4px;
+}
+.kpi-card .kpi-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.7);
+  margin-top: 6px;
+}
+.kpi-date {
+  font-size: 12.5px;
+  color: var(--text-3);
+  margin-bottom: 12px;
+}
+
+/* 赢在哪 / 需改善 - 左右对照 */
+.compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+.compare-col {
+  padding: 18px 22px;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: #FAFBFC;
+}
+.compare-col.good { border-left: 3px solid #3DA06E; }
+.compare-col.warn { border-left: 3px solid #D98E1F; }
+.compare-col h4 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14.5px;
+  margin-bottom: 12px;
+}
+.compare-col.good h4 { color: #1F6E47; }
+.compare-col.warn h4 { color: #8A5A0F; }
+.compare-col .icon-box {
+  display: inline-flex;
+  width: 22px; height: 22px;
+  align-items: center; justify-content: center;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 600;
+}
+.compare-col.good .icon-box { background: #EEF8F2; color: #1F6E47; }
+.compare-col.warn .icon-box { background: #FEF8EC; color: #8A5A0F; }
+.compare-col ul {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13.5px;
+  line-height: 1.95;
+  color: var(--text-2);
+}
+.compare-col ul li b.amt {
+  color: #C8453D;
+  font-weight: 600;
+}
+.compare-col .sub-list {
+  margin-top: 4px;
+  padding-left: 0;
+  list-style: none;
+}
+.compare-col .sub-list li {
+  font-size: 12.5px;
+  color: var(--text-3);
+  line-height: 1.7;
+  padding-left: 0;
+}
+
+/* 头部客户表格 */
+.client-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+}
+.client-table th, .client-table td {
+  padding: 12px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-soft);
+  vertical-align: middle;
+}
+.client-table thead th {
+  background: #FAFBFC;
+  font-weight: 600;
+  color: var(--text-2);
+  font-size: 12.5px;
+  border-bottom: 1px solid var(--border);
+}
+.client-table .col-client { width: 22%; font-weight: 500; }
+.client-table .col-product { width: 14%; color: var(--text-3); }
+.client-table .col-amount {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  width: 18%;
+}
+.client-table .col-note {
+  color: var(--text-3);
+  font-size: 12.5px;
+}
+.client-table tr.new-row {
+  background: #FFF7F6;
+}
+.client-table tr.new-row .col-amount { color: #C8453D; }
+.divider-row td {
+  padding: 6px 0;
+  border-bottom: 2px solid #E8F0FF;
+  font-size: 11.5px;
+  color: var(--text-3);
+  text-align: center;
+  background: #F4F7FF;
+}
+.tag-new {
+  display: inline-block;
+  padding: 2px 9px;
+  background: #C8453D;
+  color: #fff;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+.pipeline-note {
+  margin-top: 12px;
+  padding: 10px 14px;
+  background: #EEF3FE;
+  border-left: 3px solid var(--primary);
+  border-radius: 0 4px 4px 0;
+  font-size: 12.5px;
+  color: var(--text-2);
+}
+.pipeline-note b { color: var(--text); }
+
+/* 下钻链接区 */
+.drill-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.drill-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #FAFBFC;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 13.5px;
+  color: var(--text);
+  font-weight: 500;
+  transition: all 0.15s;
+}
+.drill-list a:hover {
+  background: var(--primary-soft);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+.drill-list a .arrow {
+  color: var(--primary);
+  font-weight: 600;
+}
+.drill-list a .desc {
+  color: var(--text-3);
+  font-size: 12px;
+  font-weight: 400;
+  margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+  .kpi-bar { grid-template-columns: 1fr; }
+  .compare-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <h1>教育行业 2026 Q2 Workshop</h1>
+    <div class="subtitle">2026-05-15（周四）9:30–11:30 ｜ 产品方 × 行业方</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="breadcrumb">
+    <a href="./index.html">主页</a>
+    <span class="sep">/</span>
+    <span class="current">教育行业近半年跟进回顾</span>
+  </div>
+
+  <!-- ① 首屏 KPI 3 数 -->
+  <div class="card">
+    <div class="card-title">数字概览</div>
+    <div class="kpi-date">统计周期：2025-11-20 → 2026-04-03</div>
+    <div class="kpi-bar">
+      <div class="kpi-card">
+        <div class="kpi-label">新拓客户</div>
+        <div class="kpi-num">49<span class="unit">家</span></div>
+        <div class="kpi-sub">剔除老客户后</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">已转商机</div>
+        <div class="kpi-num">14<span class="unit">家</span></div>
+        <div class="kpi-sub">教育行业口径</div>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-label">新签约 / 中标</div>
+        <div class="kpi-num">¥77W<span class="unit">· 4 家</span></div>
+        <div class="kpi-sub">豆神 / 赛优 / 考试星 / 长轻</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ② 赢在哪 / 需改善优化 -->
+  <div class="card">
+    <div class="card-title">赢在哪 vs 需改善优化</div>
+    <div class="compare-grid">
+      <div class="compare-col good">
+        <h4><span class="icon-box">✓</span>赢在哪</h4>
+        <ul>
+          <li>豆神 CDP <b class="amt">47.2W</b> 拿下（标杆案例）</li>
+          <li>轻量 FA winback 起步开单（赛优 <b class="amt">5W</b> / 考试星 <b class="amt">5W</b>）</li>
+          <li>长轻 RTA <b class="amt">19.8W</b> 老年教育快速复制落地</li>
+        </ul>
+      </div>
+      <div class="compare-col warn">
+        <h4><span class="icon-box">!</span>需改善优化</h4>
+        <ul>
+          <li>RTA 主力赛道来自<b style="color:var(--text);">老年教育</b>，<b style="color:var(--text);">K12 暂未打开</b></li>
+          <li>其他产品切入难点：
+            <ul class="sub-list">
+              <li>① CDP/SCRM 业务耦合深、定制需求多、迁移成本高且周期长</li>
+              <li>② CA / Agent 客户多自研</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ 现有客户 Top -->
+  <div class="card">
+    <div class="card-title">现有客户 Top（收入排序）<span style="font-size:12px;color:var(--text-3);font-weight:400;margin-left:10px;">备注：按消耗口径统计</span></div>
+    <table class="client-table">
+      <thead>
+        <tr>
+          <th class="col-client">客户</th>
+          <th class="col-product">产品</th>
+          <th class="col-amount">金额</th>
+          <th class="col-note">备注</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="col-client">兴趣岛</td>
+          <td class="col-product">RTA</td>
+          <td class="col-amount">¥121.9W</td>
+          <td class="col-note">31.9W 报收流程中</td>
+        </tr>
+        <tr>
+          <td class="col-client">长轻</td>
+          <td class="col-product">RTA</td>
+          <td class="col-amount">¥19.8W</td>
+          <td class="col-note">—</td>
+        </tr>
+        <tr>
+          <td class="col-client">猿辅导</td>
+          <td class="col-product">RTA</td>
+          <td class="col-amount">¥15.55W</td>
+          <td class="col-note">7.38W 报收流程中</td>
+        </tr>
+        <tr class="divider-row">
+          <td colspan="4">— 新签客户 —</td>
+        </tr>
+        <tr class="new-row">
+          <td class="col-client">豆神<span class="tag-new">新签</span></td>
+          <td class="col-product">CDP</td>
+          <td class="col-amount">¥47.2W</td>
+          <td class="col-note">标杆案例</td>
+        </tr>
+        <tr class="new-row">
+          <td class="col-client">长轻<span class="tag-new">新签</span></td>
+          <td class="col-product">RTA</td>
+          <td class="col-amount">¥5W/月</td>
+          <td class="col-note">合同口径</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="pipeline-note">
+      💧 <b>报收管线在途合计 ¥39.28W</b>（兴趣岛 31.9W + 猿辅导 7.38W）
+    </div>
+  </div>
+
+  <!-- ④ 下钻链接 -->
+  <div class="card">
+    <div class="card-title">下钻详情</div>
+    <div class="drill-list">
+      <a href="./client-map.html">
+        <span>近半年新拓展客户全景<span class="desc">· 49 家按 6 大业务板块分类</span></span>
+        <span class="arrow">→</span>
+      </a>
+      <a href="./todo-review.html">
+        <span>11月Workshop重点待办回顾<span class="desc">· 4 赛道 11 条 todo 跟进 + 老年漏斗</span></span>
+        <span class="arrow">→</span>
+      </a>
+      <a href="./winback-analysis.html">
+        <span>Winback 专项分析<span class="desc">· 30 客户数据洞察</span></span>
+        <span class="arrow">→</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="footer">
+    <a href="./index.html">← 返回主页</a>
+  </div>
+
+</div>
+
+</body>
+</html>

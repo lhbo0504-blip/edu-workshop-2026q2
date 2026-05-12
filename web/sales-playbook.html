@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDP-广告归因分析打单手册 · 教育行业 2026 Q2 Workshop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif; }
+        .gradient-header { background: linear-gradient(135deg, #285EF6 0%, #1a4cd8 100%); }
+        .card-hover { transition: transform 0.2s; }
+        .card-hover:hover { transform: translateY(-2px); box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); }
+        .breadcrumb-bar {
+            background: #fff;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 12px 24px;
+            font-size: 13px;
+            color: #888;
+        }
+        .breadcrumb-bar a { color: #888; text-decoration: none; }
+        .breadcrumb-bar a:hover { color: #285EF6; }
+        .breadcrumb-bar .sep { margin: 0 6px; color: #E5E7EB; }
+        .breadcrumb-bar .current { color: #1a1a1a; }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- 面包屑（与 workshop 风格一致） -->
+    <div class="breadcrumb-bar">
+        <div class="max-w-6xl mx-auto">
+            <a href="./index.html">主页</a>
+            <span class="sep">/</span>
+            <a href="./winback-analysis.html">Winback 专项分析</a>
+            <span class="sep">/</span>
+            <span class="current">CDP-广告归因分析打单手册</span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="gradient-header text-white py-12 px-6 shadow-lg">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-4xl font-bold mb-4">CDP-广告归因分析打单手册</h1>
+            <p class="text-xl opacity-90">独立第三方客观审计 · 跨渠道归因去重 · 私有化 / SaaS 灵活部署</p>
+        </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto py-10 px-6 space-y-12">
+
+        <!-- 1. 行业痛点与我们的核心价值 -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 border-l-4 border-sky-600 pl-4 mb-6">一、 教育行业痛点与核心卖点</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 card-hover">
+                    <div class="w-12 h-12 bg-red-100 text-red-600 rounded-lg flex items-center justify-center text-2xl mb-4">🔐</div>
+                    <h3 class="font-bold text-lg mb-2">痛点1：商业机密与核心线索外泄风险</h3>
+                    <p class="text-sm text-gray-600 mb-4">教育机构的核心资产是"意向家长名单"，使用传统SaaS工具需将转化数据回传媒体平台，等于把核心生源情报拱手相让，存在严重的生源被洗或商业机密外流风险。</p>
+                    <div class="bg-sky-50 p-3 rounded text-sm text-sky-800 border border-sky-100">
+                        <span class="font-bold">我们的方案：数据绝对掌控，部署极度灵活。</span>支持<span class="text-red-600 font-bold">私有化 + SaaS</span>双模式，高预算/高保密客户可私有化确保数据不出域，腰部客户可用SaaS降低成本。
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 card-hover">
+                    <div class="w-12 h-12 bg-orange-100 text-orange-600 rounded-lg flex items-center justify-center text-2xl mb-4">💸</div>
+                    <h3 class="font-bold text-lg mb-2">痛点2：跨渠道重复计费与抢功劳</h3>
+                    <p class="text-sm text-gray-600 mb-4">家长决策周期长，经常跨平台（抖音看视频->百度搜口碑->微信公众号留资），各媒体平台均算作自己的转化。</p>
+                    <div class="bg-sky-50 p-3 rounded text-sm text-sky-800 border border-sky-100">
+                        <span class="font-bold">我们的方案：跨渠道精准去重。</span>跨平台串联设备ID，识别家长的完整触点路径，还原真实的线索获客成本(CAC)。
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 card-hover">
+                    <div class="w-12 h-12 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center text-2xl mb-4">🔗</div>
+                    <h3 class="font-bold text-lg mb-2">痛点3：只看浅层线索，算不清最终ROI</h3>
+                    <p class="text-sm text-gray-600 mb-4">媒体平台只能归因到"表单提交"，无法追踪后续的"销售跟进 -> 试听课 -> 正价课买单"等深层转化。</p>
+                    <div class="bg-sky-50 p-3 rounded text-sm text-sky-800 border border-sky-100">
+                        <span class="font-bold">我们的方案：深层后端链路打通。</span>联动后端企点CDP或企业自有CRM系统，算清每一个广告计划最终带来的"实际报名收入"。
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. 竞品对比 -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 border-l-4 border-sky-600 pl-4 mb-6">二、 核心竞品对比 (VS 媒体自带工具/纯SaaS归因)</h2>
+            <div class="overflow-x-auto bg-white rounded-xl shadow-sm border border-gray-200">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="bg-gray-50 text-gray-600 text-sm">
+                            <th class="p-4 border-b font-semibold w-1/5">对比维度</th>
+                            <th class="p-4 border-b font-semibold w-2/5 border-r border-gray-200">❌ 竞品 (如 火山 DataFinder)</th>
+                            <th class="p-4 border-b font-semibold w-2/5 bg-sky-50 text-sky-900">✅ 我们的产品</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-4 border-b font-medium text-gray-700">归因核算立场</td>
+                            <td class="p-4 border-b border-r border-gray-200 text-gray-600">媒体平台既当运动员又当裁判，倾向于扩大本平台的转化贡献</td>
+                            <td class="p-4 border-b bg-sky-50/50 text-sky-800 font-medium">独立采集团队SDK数据自主串联，第三方视角，客观中立</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-4 border-b font-medium text-gray-700">跨渠道归因分析</td>
+                            <td class="p-4 border-b border-r border-gray-200 text-gray-600">各渠道孤立计算，抖音、百度、腾讯各自算各自的功劳，汇总线索量远超实际业务量</td>
+                            <td class="p-4 border-b bg-sky-50/50 text-sky-800 font-medium">全局视角，支持跨渠道精准归因与去重，科学分配各渠道预算</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-4 border-b font-medium text-gray-700">数据安全与资产保护</td>
+                            <td class="p-4 border-b border-r border-gray-200 text-red-600">仅 SaaS 部署，线索核心数据必须上云并与媒体共享，家长名单存在严重泄露风险</td>
+                            <td class="p-4 border-b bg-sky-50/50 text-sky-800 font-medium">提供 SaaS 与 <span class="font-bold text-red-600">私有化部署</span> 双选项，核心家长数据完全掌握在机构自己手中</td>
+                        </tr>
+                        <tr class="hover:bg-gray-50">
+                            <td class="p-4 border-b font-medium text-gray-700">业务闭环能力</td>
+                            <td class="p-4 border-b border-r border-gray-200 text-gray-600">止步于广告数据层面</td>
+                            <td class="p-4 border-b bg-sky-50/50 text-sky-800 font-medium">无缝对接企点系统，构建从"广告点击"到"成单缴费"的全链路闭环</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- 3. 目标客户画像 -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 border-l-4 border-sky-600 pl-4 mb-6">三、 教育行业主力客群</h2>
+            <div>
+                <!-- 教企市场（单列宽展示） -->
+                <div class="bg-gradient-to-br from-blue-50 to-white p-6 rounded-xl border border-blue-100 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg">主力营收市场</div>
+                    <h3 class="font-bold text-xl text-blue-900 mb-4 border-b border-blue-200 pb-2">教企客户 (教育企业)</h3>
+                    <p class="text-sm text-gray-500 mb-4">涵盖：职业技能培训(IT/公考/财会)、素质教育、语培、出国留学等</p>
+                    <ul class="space-y-3 text-sm text-gray-700 leading-relaxed">
+                        <li>
+                            <span class="mr-2">🔥</span><strong>投放特征：</strong>强依赖买量获客，<strong class="text-blue-700">投放量大（参考：多平台投放年消耗 1 亿+）</strong>，需要精准分析各渠道投放效果、支持投放预算分配，<strong class="text-blue-700">暂不考虑自建</strong>。高度看重转化 ROI，多渠道组合投放是常态。
+                        </li>
+                        <li>
+                            <span class="mr-2">💡</span><strong>核心打法：</strong>主打<span class="font-bold text-blue-700">"跨渠道去重防浪费"</span>和<span class="font-bold text-blue-700">"看透正价课ROI"</span>。帮老板算清楚每一分钱花在哪里最值。
+                        </li>
+                        <li>
+                            <span class="mr-2">⚙️</span><strong>部署策略：</strong>这部分客群对成本较敏感但非常看重效果，主推 <span class="font-bold text-blue-600">SaaS模式</span>，降低使用门槛快速成单。如果机构规模大、极度看重线索保密，推私有化。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 销售金句 -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 border-l-4 border-sky-600 pl-4 mb-6">四、 销售实战金句 (Talk Tracks)</h2>
+            <div class="space-y-4">
+                <div class="bg-white p-5 rounded-lg border-l-4 border-yellow-400 shadow-sm">
+                    <div class="text-sm font-bold text-gray-500 mb-2">针对【多平台归因重合】场景（主打教企）：</div>
+                    <p class="text-lg font-medium text-gray-800">"巨量说转化了100个，腾讯说转化了80个，但你后台其实只有120个订单。用我们的跨渠道串联，找出真实促成转化的那个触点，把冤枉钱省下来。"</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg border-l-4 border-green-500 shadow-sm">
+                    <div class="text-sm font-bold text-gray-500 mb-2">针对【深层转化/决策周期长】场景（通杀教企与高基教）：</div>
+                    <p class="text-lg font-medium text-gray-800">"家长给孩子报班、选学校，绝不是留个电话号码就马上掏钱的。我们能帮您打通后端的企点CDP或企业自有CRM系统，不看留资成本，而是看最后家长交了学费那一刻，到底是哪条广告计划立的功。"</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg border-l-4 border-red-500 shadow-sm">
+                    <div class="text-sm font-bold text-gray-500 mb-2">针对【生源数据安全与私有化】场景（主打高基教/大型机构）：</div>
+                    <p class="text-lg font-medium text-gray-800">"您的核心意向家长名单，如果回传到媒体的 SaaS 平台去做归因，就相当于把核心招生机密交给了第三方，存在极大的被洗数据风险。我们支持纯私有化部署，数据烂在自己的锅里，谁也拿不走。"</p>
+                </div>
+                <div class="bg-white p-5 rounded-lg border-l-4 border-sky-500 shadow-sm">
+                    <div class="text-sm font-bold text-gray-500 mb-2">针对【媒体归因黑盒】场景：</div>
+                    <p class="text-lg font-medium text-gray-800">"用媒体平台自带的工具测他们自己的广告效果，相当于让裁判员当运动员。您需要一把客观公正、只为您服务的独立第三方的尺子。"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 销售激励政策 -->
+        <section>
+            <h2 class="text-2xl font-bold text-gray-800 border-l-4 border-red-500 pl-4 mb-6">五、 激励政策速览 — 2026年专项激励 (内部绝密)</h2>
+            
+            <div class="bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg mb-6 flex items-start shadow-sm">
+                <span class="text-xl mr-3">⚠️</span>
+                <div>
+                    <strong class="block text-base">打单核心策略：本激励【仅限 SaaS-预付费】产品！</strong>
+                    <span class="text-sm">私有化部署及授信订单不参与此专项提比激励。在与客户沟通时，请结合客户预算，<span class="font-bold underline">优先引导客户采用 SaaS 预付费模式</span>，以最大化您的个人收益！</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+                <div class="text-sm text-gray-500 mb-6 pb-4 border-b border-gray-100 flex flex-wrap gap-4">
+                    <span class="bg-gray-100 px-2 py-1 rounded">政策范围：企点营销云（直销）</span>
+                    <span class="bg-gray-100 px-2 py-1 rounded">适用时间：2026年1月1日 — 2026年12月31日</span>
+                    <span class="bg-gray-100 px-2 py-1 rounded">仅限2026年首次购买的新客户</span>
+                </div>
+
+                <!-- 4个核心指标块 -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-gradient-to-br from-blue-500 to-blue-600 text-white p-5 rounded-xl shadow-sm">
+                        <div class="text-sm opacity-90 mb-1">提比门槛</div>
+                        <div class="text-3xl font-bold mb-1">20<span class="text-lg font-normal">万</span></div>
+                        <div class="text-xs opacity-80">企点营销云 考核收入</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-red-500 to-red-600 text-white p-5 rounded-xl shadow-sm">
+                        <div class="text-sm opacity-90 mb-1">提比比例</div>
+                        <div class="text-3xl font-bold mb-1">5<span class="text-lg font-normal">%</span></div>
+                        <div class="text-xs opacity-90 bg-red-700/30 inline-block px-2 py-0.5 rounded mt-1">原2% -> 已上调</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-orange-400 to-orange-500 text-white p-5 rounded-xl shadow-sm">
+                        <div class="text-sm opacity-90 mb-1">标杆门槛</div>
+                        <div class="text-3xl font-bold mb-1">50<span class="text-lg font-normal">万</span></div>
+                        <div class="text-xs opacity-80">单客户预付费订单</div>
+                    </div>
+                    <div class="bg-gradient-to-br from-green-500 to-green-600 text-white p-5 rounded-xl shadow-sm">
+                        <div class="text-sm opacity-90 mb-1">单CID封顶</div>
+                        <div class="text-3xl font-bold mb-1">2<span class="text-lg font-normal">万</span></div>
+                        <div class="text-xs opacity-80">同一客户单产品上限</div>
+                    </div>
+                </div>
+
+                <!-- 详细规则 -->
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="border border-gray-100 rounded-xl p-6 bg-gray-50 relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 text-6xl opacity-5">💰</div>
+                        <h3 class="font-bold text-lg mb-3 flex items-center text-gray-800"><span class="mr-2">💰</span> 提比激励规则</h3>
+                        <p class="text-sm text-gray-700 mb-4">达到 <strong class="text-blue-600 text-base">20万</strong> 考核收入门槛后，按总收入的 <strong class="text-red-500 text-base">5%</strong> 发放奖金</p>
+                        <ul class="text-sm text-gray-600 space-y-2">
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 仅限 2026年首次购买 企点营销云的新客户</li>
+                            <li class="flex items-start"><span class="text-red-500 font-bold mr-2">•</span> <span class="text-red-600 font-bold">预付费订单，不含授信订单</span></li>
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> 季度结算，与个人回款比例挂钩</li>
+                            <li class="flex items-start"><span class="text-blue-500 mr-2">•</span> SaaS新通路/渠道复算按 100% 计入</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="border border-gray-100 rounded-xl p-6 bg-gray-50 relative overflow-hidden">
+                        <div class="absolute -right-4 -top-4 text-6xl opacity-5">🏆</div>
+                        <h3 class="font-bold text-lg mb-3 flex items-center text-gray-800"><span class="mr-2">🏆</span> 标杆激励（季度 TOP 3）</h3>
+                        <p class="text-sm text-gray-700 mb-6">单客户预付费订单达到 <strong class="text-orange-500 text-base">50万</strong>，每季度选取 TOP 3 获奖</p>
+                        <div class="flex justify-around text-center mb-5">
+                            <div class="transform transition hover:scale-110">
+                                <div class="text-3xl mb-1 drop-shadow-sm">🥇</div>
+                                <div class="font-bold text-orange-500 text-xl">5万</div>
+                            </div>
+                            <div class="transform transition hover:scale-110">
+                                <div class="text-3xl mb-1 drop-shadow-sm">🥈</div>
+                                <div class="font-bold text-gray-500 text-xl">3万</div>
+                            </div>
+                            <div class="transform transition hover:scale-110">
+                                <div class="text-3xl mb-1 drop-shadow-sm">🥉</div>
+                                <div class="font-bold text-amber-700 text-xl">1万</div>
+                            </div>
+                        </div>
+                        <div class="bg-orange-100/50 text-orange-800 text-xs py-2 px-3 rounded text-center font-medium">
+                            ⚠️ 提比激励 + 标杆激励 <strong class="text-red-600">可叠加</strong>，两个激励不互斥
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 示例与FAQ -->
+                <div class="bg-blue-50/50 rounded-xl p-6 border border-blue-100">
+                    <h3 class="font-bold text-base mb-4 text-gray-800 flex items-center">📊 快速计算示例</h3>
+                    <div class="grid md:grid-cols-2 gap-6 text-sm text-gray-700">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <strong class="text-gray-800 block mb-2">场景 A：刚过门槛</strong>
+                            <p class="mb-1">新拓企点营销云客户，Q1考核收入 25万</p>
+                            <p class="text-gray-500">→ 提比奖金 = 25万 × 5% = <span class="text-blue-600 font-bold text-base">1.25万</span></p>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <strong class="text-gray-800 block mb-2">场景 B：单客户大单</strong>
+                            <p class="mb-1">单客户预付费 60万（超过50万标杆门槛）</p>
+                            <p class="text-gray-500">→ 提比 60×5%=3万 + 标杆 (若TOP3) 最高 <span class="text-blue-600 font-bold text-base">+5万</span></p>
+                        </div>
+                    </div>
+                    <div class="mt-5 pt-4 border-t border-blue-100/50 text-sm text-gray-600 flex items-start">
+                        <span class="text-red-500 font-bold mr-2 whitespace-nowrap">❓ 需要主动申报吗？</span> 
+                        <span>不需要。产品部每季度将名单发给销管，由销管通过罗盘确认，下季度结算发放。</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 text-gray-400 text-sm">
+        内部销售资料 · 请根据客户实际场景灵活运用
+        <div class="mt-4">
+            <a href="./winback-analysis.html" class="text-sky-600 hover:underline">← 返回 Winback 专项分析</a>
+            &nbsp;|&nbsp;
+            <a href="./index.html" class="text-sky-600 hover:underline">返回主页</a>
+        </div>
+    </footer>
+</body>
+</html>

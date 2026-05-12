@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Winback 专项分析 · 教育行业 2026 Q2 Workshop</title>
+<link rel="stylesheet" href="./assets/style.css">
+<style>
+/* 本页专属补丁：顶部结论条 + 三列对比 */
+.summary-bar {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.sum-card {
+  padding: 22px 24px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  border-top: 4px solid;
+}
+.sum-card.good { border-top-color: #3DA06E; }
+.sum-card.warn { border-top-color: #D98E1F; }
+.sum-card.bad  { border-top-color: #C33A3A; }
+.sum-card .label {
+  font-size: 13px;
+  color: var(--text-3);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.sum-card .primary {
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 6px;
+}
+.sum-card.good .primary { color: #3DA06E; }
+.sum-card.warn .primary { color: #D98E1F; }
+.sum-card.bad  .primary { color: #C33A3A; }
+.sum-card .sub {
+  font-size: 13px;
+  color: var(--text-2);
+  line-height: 1.6;
+}
+.sum-card .sub b {
+  color: var(--text);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* 三列对比客户池 */
+.three-col {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 22px;
+}
+.col-bucket {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.col-bucket .col-head {
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+  font-size: 14px;
+}
+.col-bucket.good .col-head { background: #EEF8F2; color: #1F6E47; }
+.col-bucket.warn .col-head { background: #FEF8EC; color: #8A5A0F; }
+.col-bucket.bad  .col-head { background: #FDEEEE; color: #8A2828; }
+.col-bucket .col-meta {
+  font-size: 12px;
+  color: var(--text-3);
+  font-weight: 400;
+  margin-top: 3px;
+}
+.col-bucket .col-body {
+  padding: 0;
+  flex: 1;
+}
+.col-bucket ul.col-list {
+  list-style: none;
+  padding: 0;
+}
+.col-bucket ul.col-list li {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--border-soft);
+  font-size: 12.5px;
+  line-height: 1.55;
+}
+.col-bucket ul.col-list li:last-child { border-bottom: none; }
+.col-bucket ul.col-list li .cname {
+  font-weight: 500;
+  color: var(--text);
+  display: block;
+  margin-bottom: 2px;
+}
+.col-bucket ul.col-list li .cmeta {
+  font-size: 11.5px;
+  color: var(--text-3);
+  font-variant-numeric: tabular-nums;
+}
+.col-bucket ul.col-list li .camount {
+  color: var(--text-2);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  margin-left: 4px;
+}
+
+@media (max-width: 900px) {
+  .summary-bar, .three-col { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <h1>教育行业 2026 Q2 Workshop</h1>
+    <div class="subtitle">2026-05-15（周四）9:30–11:30 ｜ 产品方 × 行业方</div>
+  </div>
+</div>
+
+<div class="container">
+
+  <div class="breadcrumb">
+    <a href="./index.html">主页</a>
+    <span class="sep">/</span>
+    <a href="./todo-review.html">11月Workshop重点待办回顾</a>
+    <span class="sep">/</span>
+    <span class="current">Winback 专项分析</span>
+  </div>
+
+  <!-- 0. 专项总览 -->
+  <div class="card">
+    <div class="card-title">本次 winback 专项总览</div>
+    <div style="font-size:13.5px;line-height:1.9;color:var(--text-2);">
+      本次专项共覆盖 <b style="color:var(--text);">30 家</b>教育行业客户，来源包括：
+      <ol style="margin:8px 0 8px 24px;">
+        <li>友商存量清单中匹配到的 KA 客户</li>
+        <li>现有 KA 中在用竞品的客户</li>
+      </ol>
+      由 4 个销售团队联合摸排完成。
+    </div>
+  </div>
+
+  <!-- 1. 现有结论（置顶） -->
+  <div class="card">
+    <div class="card-title">现有结论</div>
+    <div class="summary-bar">
+      <div class="sum-card good">
+        <div class="label">✅ winback 成功</div>
+        <div class="primary">10%</div>
+        <div class="sub"><b>3 家</b>客户 · 合计金额 <b>¥57W/年</b></div>
+      </div>
+      <div class="sum-card warn">
+        <div class="label">⚠️ 无迁移意愿 / 已续费</div>
+        <div class="primary">27%</div>
+        <div class="sub"><b>8 家</b>客户 · 已知金额 <b>¥159W/年</b></div>
+      </div>
+      <div class="sum-card bad">
+        <div class="label">⚫ 结构性打不动</div>
+        <div class="primary">63%</div>
+        <div class="sub"><b>19 家</b>客户 · 自研 / 弃用 / 倒闭，已退出可迁移池</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 三列对比 -->
+  <div class="card">
+    <div class="card-title">客户池明细</div>
+    <div class="three-col">
+
+      <!-- 列 1: winback 成功 -->
+      <div class="col-bucket good">
+        <div class="col-head">
+          ✅ winback 成功
+          <div class="col-meta">3 家 · ¥57W/年</div>
+        </div>
+        <div class="col-body">
+          <ul class="col-list">
+            <li>
+              <span class="cname">北京赛优职教育（心理培训）</span>
+              <span class="cmeta">张松 · B · 神策浅用+前场配合快赢</span>
+              <span class="camount">¥5W / SaaS订阅</span>
+            </li>
+            <li>
+              <span class="cname">北京梦见星科技</span>
+              <span class="cmeta">mani · A · 神策浅用+前场配合快赢</span>
+              <span class="camount">¥5W / SaaS订阅</span>
+            </li>
+            <li>
+              <span class="cname">北京豆神智睿网络科技</span>
+              <span class="cmeta">siyan · A · 广告归因刚需，PK 火山 win</span>
+              <span class="camount">¥47W / 私有化订阅</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 列 2: 无迁移意愿/已续费 -->
+      <div class="col-bucket warn">
+        <div class="col-head">
+          ⚠️ 无迁移意愿 / 已续费
+          <div class="col-meta">8 家 · ¥159W/年</div>
+        </div>
+        <div class="col-body">
+          <ul class="col-list">
+            <li>
+              <span class="cname">北京华图宏阳教育文化发展</span>
+              <span class="cmeta">张松 · A · 深度使用，迁移成本高；腾讯系无投放；CA 已自研</span>
+              <span class="camount">¥60W</span>
+            </li>
+            <li>
+              <span class="cname">北京环球兴学（环球网校）</span>
+              <span class="cmeta">张松 · C · 深度使用、25 已续费 3 年；投放低</span>
+              <span class="camount">¥50W 左右</span>
+            </li>
+            <li>
+              <span class="cname">深圳点猫科技</span>
+              <span class="cmeta">xiaoyu · C · 深度使用、无迁移意愿</span>
+              <span class="camount">¥20W / 年</span>
+            </li>
+            <li>
+              <span class="cname">北京嗨学网教育科技</span>
+              <span class="cmeta">张松 · A · GIO SaaS 多年历史数据无法导出，winback 失败</span>
+              <span class="camount">¥12W / 年</span>
+            </li>
+            <li>
+              <span class="cname">北京大米科技（VIPkid）</span>
+              <span class="cmeta">mani · C · 1 人维护神策，产研 all in AI；25/12 已续约</span>
+              <span class="camount">¥10W / 年</span>
+            </li>
+            <li>
+              <span class="cname">北海安径教育科技</span>
+              <span class="cmeta">mani · A · 4 月已续费；视频号直播投放 RTA 不支持</span>
+              <span class="camount">¥7W / 年</span>
+            </li>
+            <li>
+              <span class="cname">北京粉笔蓝天（考公）</span>
+              <span class="cmeta">张松 · A · 深度使用、客户内部无动力</span>
+              <span class="camount">—</span>
+            </li>
+            <li>
+              <span class="cname">北京方圆众合（法考）</span>
+              <span class="cmeta">张松 · B · 无迁移意愿</span>
+              <span class="camount">—</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 列 3: 自研弃用 -->
+      <div class="col-bucket bad">
+        <div class="col-head">
+          ⚫ 结构性打不动（自研弃用）
+          <div class="col-meta">19 家 · 已退出可迁移池</div>
+        </div>
+        <div class="col-body">
+          <ul class="col-list">
+            <li><span class="cname">酷得少年（天津）文化传播</span><span class="cmeta">mani · A · 已自研</span></li>
+            <li><span class="cname">杭州小伴熊（美术宝）</span><span class="cmeta">张松 · A · 已自研</span></li>
+            <li><span class="cname">大学长（金吉列）</span><span class="cmeta">张松 · A · 已自研</span></li>
+            <li><span class="cname">北京聪明核桃教育科技</span><span class="cmeta">张松 · A · 已自研</span></li>
+            <li><span class="cname">深圳小鹅网络技术</span><span class="cmeta">xiaoyu · C · 已自研</span></li>
+            <li><span class="cname">深圳优学天下（优学派）</span><span class="cmeta">xiaoyu · C · 已自研</span></li>
+            <li><span class="cname">上海高顿教育培训</span><span class="cmeta">mani · A · 已自研</span></li>
+            <li><span class="cname">新道科技股份</span><span class="cmeta">mani · C · 已弃用</span></li>
+            <li><span class="cname">达内时代科技集团</span><span class="cmeta">张松 · C · 已弃用</span></li>
+            <li><span class="cname">北京鲸航（新航道）</span><span class="cmeta">张松 · C · 已弃用</span></li>
+            <li><span class="cname">北京伟东教育科技</span><span class="cmeta">mani · C · 已释放</span></li>
+            <li><span class="cname">中公教育科技股份</span><span class="cmeta">张松 · C · 经营不善</span></li>
+            <li><span class="cname">北京童程童美科技</span><span class="cmeta">— · C · 已倒闭</span></li>
+            <li><span class="cname">北京开课吧科技</span><span class="cmeta">— · C · 已破产</span></li>
+            <li><span class="cname">北京奥鹏远程教育</span><span class="cmeta">张松 · C · 经营不善</span></li>
+            <li><span class="cname">都学网络（奥鹏子公司）</span><span class="cmeta">张松 · C · 经营不善</span></li>
+            <li><span class="cname">上海一起作业信息科技</span><span class="cmeta">mani · C · 即将释放</span></li>
+            <li><span class="cname">北京翼鸥教育科技</span><span class="cmeta">mani · B · 使用神策中，销售摸排中、结果未定</span></li>
+            <li><span class="cname">深圳大生智云（51talk）</span><span class="cmeta">mani · B · 内部推动难</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 3. 关键结论（收尾） -->
+  <div class="card">
+    <div class="card-title">关键结论</div>
+    <ul class="insight-list">
+      <li>
+        <span class="ttl">Winback 成功率 10%，适用场景极窄</span>
+        <span class="desc">3 条成功样本有明确规律：神策浅用 + 前场配合快赢，或广告归因刚需 + 产品硬 PK。深度使用神策/GIO/CA 的客户几乎 100% 无迁移意愿。</span>
+      </li>
+      <li>
+        <span class="ttl">63% 客户结构性打不动，教育存量池已萎缩</span>
+        <span class="desc">19 条已自研/弃用/倒闭/释放，反映整个教育赛道收缩。Winback 在教育不是增量战略，是清盘动作。</span>
+      </li>
+      <li>
+        <span class="ttl">金额小单为主，唯一中单靠广告归因破局</span>
+        <span class="desc">新增 winback ¥57W 中有 ¥47W 来自豆神智睿一单（广告归因私有化）。SaaS 订阅标杆 ¥5W × 2，单客价值低。要做大 winback 只能押"刚需场景 + 产品硬实力"。</span>
+      </li>
+      <li>
+        <span class="ttl">跨产品撬动路径不通</span>
+        <span class="desc">深度神策客户几乎不在腾讯广告投放盘里——TOB 无需求、投放低、腾讯系无投放、视频号直播 RTA 不支持。"winback 神策 → 转化 RTA/CA/MA" 组合拳不成立。</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- 补充资料 -->
+  <div class="card">
+    <div class="card-title">补充资料</div>
+    <a class="mini-link" href="./sales-playbook.html">CDP-广告归因分析打单手册 · 痛点 / 竞品对比 / 主力客群 / 销售金句 / 激励政策</a>
+  </div>
+
+  <div class="footer">
+    <a href="./todo-review.html">← 返回 11月Workshop重点待办回顾</a> &nbsp;|&nbsp;
+    <a href="./index.html">返回主页</a>
+  </div>
+
+</div>
+
+</body>
+</html>
