@@ -431,6 +431,166 @@ details.todo-detail .detail-body .lbl {
 @media (max-width: 768px) {
   .summary-bar { grid-template-columns: 1fr 1fr; }
   .todo-table .col-owner { display: none; }
+  .battle-map, .battle-map thead, .battle-map tbody, .battle-map tr, .battle-map td, .battle-map th { display: block; }
+  .recap-grid { grid-template-columns: 1fr; }
+}
+
+/* 关键作战地图 */
+.battle-map {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+  table-layout: fixed;
+}
+.battle-map thead th {
+  background: var(--primary);
+  color: #fff;
+  padding: 10px 12px;
+  font-weight: 600;
+  font-size: 13px;
+  text-align: left;
+  border: 1px solid var(--primary);
+}
+.battle-map thead th.bm-corner { background: #1A4CD8; }
+.battle-map tbody th {
+  background: var(--primary-soft);
+  color: var(--primary);
+  padding: 12px;
+  font-weight: 600;
+  font-size: 13px;
+  text-align: left;
+  border: 1px solid var(--border);
+  vertical-align: middle;
+  width: 18%;
+}
+.battle-map tbody td {
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  vertical-align: top;
+  line-height: 1.55;
+}
+.battle-map td.bm-empty {
+  background: #F3F4F6;
+  color: var(--text-3);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 300;
+}
+.battle-map .bm-tag {
+  display: inline-block;
+  background: var(--primary);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.battle-map .bm-detail {
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+/* 跟进总结：漏斗 + Top */
+.recap-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 20px;
+}
+.recap-sub {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border);
+}
+.recap-funnel .rf-stage {
+  display: grid;
+  grid-template-columns: 95px 1fr;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.recap-funnel .rf-label {
+  font-size: 12.5px;
+  color: var(--text-2);
+  font-weight: 500;
+  text-align: right;
+}
+.recap-funnel .rf-bar {
+  position: relative;
+  height: 28px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--primary) var(--w), #F1F2F4 var(--w), #F1F2F4 100%);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+.recap-funnel .rf-bar span {
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+.recap-funnel .rf-bar-amt {
+  background: linear-gradient(90deg, #C8453D 0%, #C8453D var(--w), #F1F2F4 var(--w), #F1F2F4 100%);
+}
+
+.recap-client-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12.5px;
+}
+.recap-client-table thead th {
+  background: #FAFBFC;
+  color: var(--text-2);
+  padding: 8px 10px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 11.5px;
+  border-bottom: 1px solid var(--border);
+}
+.recap-client-table tbody td {
+  padding: 9px 10px;
+  border-bottom: 1px solid var(--border-soft);
+  vertical-align: middle;
+}
+.recap-client-table .rt-prod { color: var(--text-3); width: 16%; }
+.recap-client-table .rt-amt {
+  text-align: right;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  width: 20%;
+}
+.recap-client-table .rt-note {
+  color: var(--text-3);
+  font-size: 11.5px;
+  width: 32%;
+}
+.recap-client-table tr.rt-divider td {
+  text-align: center;
+  background: #F4F7FF;
+  padding: 4px 10px;
+  border-bottom: 2px solid #E8F0FF;
+  color: var(--text-3);
+  font-size: 11px;
+}
+.recap-client-table tr.rt-new {
+  background: #FFF7F6;
+}
+.recap-client-table tr.rt-new .rt-amt { color: #C8453D; }
+.rt-tag {
+  display: inline-block;
+  padding: 1px 7px;
+  background: #C8453D;
+  color: #fff;
+  border-radius: 9px;
+  font-size: 10.5px;
+  font-weight: 500;
+  margin-left: 5px;
+  vertical-align: middle;
 }
 </style>
 </head>
@@ -451,22 +611,149 @@ details.todo-detail .detail-body .lbl {
     <span class="current">11月Workshop重点待办回顾</span>
   </div>
 
-  <!-- H1 半年整体回顾入口 -->
-  <a href="./summary.html" style="display:flex;align-items:center;justify-content:space-between;padding:14px 20px;background:linear-gradient(90deg,#EEF3FE 0%,#FAFBFC 100%);border:1px solid #D6E4FE;border-left:4px solid var(--primary);border-radius:8px;margin-bottom:18px;text-decoration:none;color:var(--text);transition:all 0.15s;">
-    <div>
-      <span style="display:inline-block;background:var(--primary);color:#fff;padding:2px 10px;border-radius:3px;font-size:12px;font-weight:500;margin-right:10px;">全景摘要</span>
-      <span style="font-size:13.5px;color:var(--text);font-weight:500;">教育行业近半年跟进回顾</span>
-      <span style="font-size:12.5px;color:var(--text-3);margin-left:8px;">· 数字概览 + 赢在哪 vs 需改善 + 现有客户 Top</span>
-    </div>
-    <span style="color:var(--primary);font-weight:500;font-size:13px;">→</span>
-  </a>
-
-  <!-- 0. 专项总览 -->
+  <!-- 关键作战地图（基于附件1） -->
   <div class="card">
-    <div class="card-title">本次回顾说明</div>
-    <div style="font-size:13.5px;line-height:1.9;color:var(--text-2);">
-      本次回顾基于 2025 年 11 月 Workshop 产生的关键 todo，按 <b style="color:var(--text);">5 赛道</b>（老年 / K12 / AI 初创 / 素质职教 / 高教）分组复盘，
-      下方先呈现 4 个存量赛道的综述与详情，高教作为新增量方向放在末尾结论中单独总结。
+    <div class="card-title">11月 Workshop 关键作战地图</div>
+    <table class="battle-map">
+      <thead>
+        <tr>
+          <th class="bm-corner">赛道 / 产品线</th>
+          <th>CDP · MA · SCRM · CA</th>
+          <th>RTA</th>
+          <th>Agent 营销</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th>老年</th>
+          <td>
+            <div class="bm-tag">轻量版工具推进</div>
+            <div class="bm-detail">客户清单输出（中腰部 / 友商）；FA 10W/年支持按月下单</div>
+          </td>
+          <td>
+            <div class="bm-tag">复制推广</div>
+            <div class="bm-detail">腾讯&巨量消耗排序 → 客户清单；新增 SaaS 行业模型；同类客户流量争抢话术</div>
+          </td>
+          <td>
+            <div class="bm-tag">探索尝试</div>
+            <div class="bm-detail">CA Agent 轻量版单售；嫁接客户自建 CDP 售卖 Agent（带轻量 MA）</div>
+          </td>
+        </tr>
+        <tr>
+          <th>K12</th>
+          <td>
+            <div class="bm-tag">winback</div>
+            <div class="bm-detail">神策客户清单 → 云+AI 联动售卖；自建客户 → Agent 切入 upsell CDP/MA</div>
+          </td>
+          <td>
+            <div class="bm-tag">打标杆 + 复制</div>
+            <div class="bm-detail">猿辅导标杆；3W+ 日投客户行业模型快测；语言培训优先；适配 0元课/试听课</div>
+          </td>
+          <td class="bm-empty">—</td>
+        </tr>
+        <tr>
+          <th>素质 / 职业教育</th>
+          <td class="bm-empty">—</td>
+          <td>
+            <div class="bm-tag">编程专项</div>
+            <div class="bm-detail">根据作业网站匹配，完成种子包；编程客户健康度尚可</div>
+          </td>
+          <td class="bm-empty">—</td>
+        </tr>
+        <tr>
+          <th>AI 初创教育企业</th>
+          <td>
+            <div class="bm-tag">轻量版工具推进</div>
+            <div class="bm-detail">客户清单 / 竞品策略 / 泛互赢单经验分享；FA 10W/年支持按月</div>
+          </td>
+          <td class="bm-empty">—</td>
+          <td class="bm-empty">—</td>
+        </tr>
+        <tr>
+          <th>高教</th>
+          <td class="bm-empty">—</td>
+          <td class="bm-empty">—</td>
+          <td>
+            <div class="bm-tag">探索尝试</div>
+            <div class="bm-detail">本科 / 商学 / 经管学院清单；价格 ≤10W；合作方点播课程；服务商覆盖（参考用友/信道）</div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 跟进总结：漏斗 + 现有客户 Top -->
+  <div class="card">
+    <div class="card-title">跟进总结</div>
+    <div class="recap-grid">
+      <!-- 左：漏斗 -->
+      <div class="recap-funnel">
+        <div class="recap-sub">数字概览</div>
+        <div class="rf-stage">
+          <div class="rf-label">新拓客户</div>
+          <div class="rf-bar" style="--w:100%;"><span>49 家</span></div>
+        </div>
+        <div class="rf-stage">
+          <div class="rf-label">已转商机</div>
+          <div class="rf-bar" style="--w:75%;"><span>14 家</span></div>
+        </div>
+        <div class="rf-stage">
+          <div class="rf-label">新签约 / 中标</div>
+          <div class="rf-bar" style="--w:50%;"><span>4 家</span></div>
+        </div>
+        <div class="rf-stage rf-stage-amt">
+          <div class="rf-label">项目金额</div>
+          <div class="rf-bar rf-bar-amt" style="--w:35%;"><span>¥77W</span></div>
+        </div>
+      </div>
+
+      <!-- 右：现有客户 Top -->
+      <div class="recap-top">
+        <div class="recap-sub">现有客户 Top（收入排序）</div>
+        <table class="recap-client-table">
+          <thead>
+            <tr>
+              <th>客户</th>
+              <th>产品</th>
+              <th class="rt-amt">金额</th>
+              <th>备注</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>兴趣岛</td>
+              <td class="rt-prod">RTA</td>
+              <td class="rt-amt">¥121.9W</td>
+              <td class="rt-note">31.9W 报收流程中</td>
+            </tr>
+            <tr>
+              <td>长轻</td>
+              <td class="rt-prod">RTA</td>
+              <td class="rt-amt">¥19.8W</td>
+              <td class="rt-note">PaaS 产品按实际消耗金额统计</td>
+            </tr>
+            <tr>
+              <td>猿辅导</td>
+              <td class="rt-prod">RTA</td>
+              <td class="rt-amt">¥15.55W</td>
+              <td class="rt-note">7.38W 报收流程中</td>
+            </tr>
+            <tr class="rt-divider"><td colspan="4">— 新签客户 —</td></tr>
+            <tr class="rt-new">
+              <td>豆神<span class="rt-tag">新签</span></td>
+              <td class="rt-prod">CDP</td>
+              <td class="rt-amt">¥47.2W</td>
+              <td class="rt-note">标杆案例</td>
+            </tr>
+            <tr class="rt-new">
+              <td>长轻<span class="rt-tag">新签</span></td>
+              <td class="rt-prod">RTA</td>
+              <td class="rt-amt">¥5W/月</td>
+              <td class="rt-note">合同口径</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 
@@ -517,13 +804,13 @@ details.todo-detail .detail-body .lbl {
       <div class="bucket-body">
         <table class="todo-table">
           <thead>
-            <tr><th class="col-no">#</th><th class="col-action">关键决策 · 关键行动</th><th class="col-owner">负责人</th><th class="col-q2">2026 Q2 跟进</th><th class="col-judge">判定</th></tr>
+            <tr><th class="col-no">#</th><th class="col-action">关键决策 · 关键行动</th><th class="col-owner">负责人</th><th class="col-q2">跟进结论</th><th class="col-judge">判定</th></tr>
           </thead>
           <tbody>
             <tr>
               <td class="col-no">7</td>
               <td class="col-action"><b>RTA 标杆打造</b><br><span style="color:var(--text-3);font-size:12px">猿辅导重点跟进、标杆打造</span></td>
-              <td class="col-owner">adam</td>
+              <td class="col-owner">adam/sigma</td>
               <td class="col-q2">猿辅导已签约，<b>消耗不高</b></td>
               <td class="col-judge"><span class="judge warn">🟡 需 reset</span></td>
             </tr>
@@ -536,20 +823,27 @@ details.todo-detail .detail-body .lbl {
             </tr>
             <tr>
               <td class="col-no">10</td>
-              <td class="col-action"><b>CDP winback</b><br><span style="color:var(--text-3);font-size:12px">友商客户清单</span></td>
+              <td class="col-action"><b>CDP/FA winback</b><br><span style="color:var(--text-3);font-size:12px">涵盖 K12 / 教育服务商 / 职业素质教育</span></td>
               <td class="col-owner">bonnie</td>
-              <td class="col-q2">26 客户清单 → 9 高优跟进 → 成功 winback 1 家，其余已摸排</td>
+              <td class="col-q2">30 客户清单 → 11 高优跟进 → 成功 winback 3 家，其余已摸排</td>
               <td class="col-judge"><span class="judge good">🟢 推进良好</span></td>
             </tr>
           </tbody>
         </table>
         <details class="todo-detail">
-          <summary>展开 1203 节点完成情况与跟进总结</summary>
+          <summary>展开节点完成情况与交付物</summary>
           <div class="detail-body">
-            <p><span class="lbl">#7 1203</span>跟进中。合作条款基本谈妥，冲刺年内签约。</p>
-            <p><span class="lbl">#7 跟进总结</span>K12 客户中 AMS Top20 占 8 家，RTA 签约 2 家（1 家已下线）。猿辅导近 3 月日耗 1.5W-3W，受寒暑假影响（课程整体日耗 5W 不到），加上客户效果预期严苛、按期看效果/后转周期长，调整节奏缓慢、起量较慢。</p>
-            <p><span class="lbl">#8 跟进总结</span>RTA 在 K12 虽有标杆，但整体覆盖及消耗渗透依然有待提升。</p>
-            <p><span class="lbl">#10 跟进总结</span>详见 <a href="./winback-analysis.html">Winback 专项分析</a>（30 客户数据洞察）。</p>
+            <p><span class="lbl">#7 25Q4</span>🟡 跟进中 · adam/sigma · 合作条款基本谈妥，冲刺年内签约。</p>
+            <p><span class="lbl">#7 2026Q2</span>✅ 已完成 · 已签约，但整体消耗不高。</p>
+            <p><span class="lbl">#7 跟进结论</span>K12 客户中 AMS Top20 占 8 家，RTA 签约 2 家（1 家已下线）。猿辅导近 3 月 RTA 日耗 1.5W-3W，受寒暑假影响（课程整体日耗 5W 不到），加上客户效果预期严苛、按期看效果/后转周期长，调整节奏缓慢、起量较慢。</p>
+            <p><span class="lbl">#8 25Q4</span>✅ 已完成 · sigma · 行业模型可以针对 K12 学科、思维课程重点突破。</p>
+            <p><span class="lbl">#8 2026Q2</span>✅ 已完成 · 暂无标杆，突破难。</p>
+            <p><span class="lbl">#8 跟进结论</span>RTA 在 K12 虽有标杆，但整体覆盖及消耗渗透依然有待提升。</p>
+            <p><span class="lbl">#9 语言培训 25Q4</span>✅ 已完成 · manizhao · 已对齐，优先跟进 5 个客户。</p>
+            <p><span class="lbl">#9 2026Q2</span>✅ 已完成 · 消耗不高，样本数据量不够建模推进。</p>
+            <p><span class="lbl">#10 25Q4</span>✅ 已完成 · bonnie · 已拿到各区匹配的客户清单 30 个，内部对齐、筛选 11 个客户高优跟进中。</p>
+            <p><span class="lbl">#10 2026Q2</span>✅ 已完成 · 成功 winback 3 家，其余已摸排。</p>
+            <p><span class="lbl">#10 跟进结论</span>详见 <a href="./winback-analysis.html">Winback 专项分析</a>（30 客户数据洞察）。</p>
           </div>
         </details>
       </div>
@@ -565,7 +859,10 @@ details.todo-detail .detail-body .lbl {
 
         <!-- 老年漏斗 -->
         <div class="funnel">
-          <div class="funnel-title">📊 老年 RTA 漏斗：触达 → 测试 → 签约 → 收入</div>
+          <div style="font-size:12.5px;color:var(--text-2);margin-bottom:12px;padding:8px 12px;background:var(--primary-soft);border-left:3px solid var(--primary);border-radius:0 4px 4px 0;line-height:1.7;">
+            在最新的 AMS 消耗 top20 客户中，老年教育客户占 <b style="color:var(--text);">8 家</b>（高峰时占比超 60%），企点 RTA 覆盖情况如下：
+          </div>
+          <div class="funnel-title">📊 老年 RTA 头部渗透</div>
           <div class="funnel-stage">
             <div class="stage-label">触达</div>
             <div class="stage-bar" style="--w: 87.5%"></div>
@@ -588,7 +885,7 @@ details.todo-detail .detail-body .lbl {
           </div>
 
           <div class="funnel-revenue">
-            <div style="font-weight:600;color:var(--text);margin-bottom:10px;">教育行业实际产生收入的 3 家客户（2026.1 ~ 5.10 报收 · 合计 ¥144.81W）</div>
+            <div style="font-weight:600;color:var(--text);margin-bottom:10px;">实际产生收入的 3 家客户（2026.1-2026.5 合计 ¥144.81W）</div>
             <div class="pie-wrap">
               <div class="pie" style="background: conic-gradient(
                 #C75A1A 0% 84.2%,
@@ -621,13 +918,13 @@ details.todo-detail .detail-body .lbl {
           </div>
 
           <div class="risk-warn">
-            ⚠️ <b>寡头效应明显，存在流失风险</b>：兴趣岛一家占老年收入 <b>84%</b>；长轻、红松目前消耗已接近 0，需重点关注客户健康度，避免规模化流失。
+            ⚠️ <b>长轻、红松目前消耗接近 0</b>，主要原因：①受 AMS 教育赛道风控影响，客户消耗受损严重；②基于客户新的业务需求，仍需评估交付方案。老年赛道需关注客户交付健康度。
           </div>
         </div>
 
         <table class="todo-table">
           <thead>
-            <tr><th class="col-no">#</th><th class="col-action">关键决策 · 关键行动</th><th class="col-owner">负责人</th><th class="col-q2">2026 Q2 跟进</th><th class="col-judge">判定</th></tr>
+            <tr><th class="col-no">#</th><th class="col-action">关键决策 · 关键行动</th><th class="col-owner">负责人</th><th class="col-q2">跟进结论</th><th class="col-judge">判定</th></tr>
           </thead>
           <tbody>
             <tr>
@@ -647,11 +944,15 @@ details.todo-detail .detail-body .lbl {
           </tbody>
         </table>
         <details class="todo-detail">
-          <summary>展开 1203 节点完成情况与交付物</summary>
+          <summary>展开节点完成情况与交付物</summary>
           <div class="detail-body">
-            <p><span class="lbl">#1 1203</span>已完成。AMS Top10 输出（兴趣岛/十方/上古易/西安鸣叫/尚德/红松/高顿/前沿/文曲星鸿/三三得九/高途）；其中 4 家不稳定短期充量中。</p>
-            <p><span class="lbl">#2 1203</span>待开始 → Q2 仍未启动。</p>
-            <p><span class="lbl">#1 跟进总结</span>教育行业 AMS Top20 中，企点 RTA 渗透 14 家、测试 10 家、合作 7 家（其中 1 家合作 CDP）；老年 Top20 占 8 家。</p>
+            <p><span class="lbl">#1 25Q4</span>✅ 已完成 · bonnie · AMS Top10：兴趣岛、十方、上古易、西安鸣叫、尚德、红松、高顿、前沿（博商）、文曲星鸿、三三得九、高途。其中上古易、西安鸣叫、文曲星鸿、三三得九 4 家不稳定、短期充量中。</p>
+            <p><span class="lbl">#1 2026Q2</span>✅ 已完成 · <b>AMS Top20</b>：兴趣岛、作业帮、叫叫阅读、猿辅导、简知、跟谁学（高途）、红松、雨知教育、尚德、十方、乐橙、糖豆、高顿、聪明核桃、豆神、学而思、启帆、蓝色星球、启牛、挖财。</p>
+            <p><span class="lbl">#1 跟进结论</span>教育行业 AMS Top20 中与教育行业配合的工作，8 家在教育 Top20 中；已签约 3 家，2 家测试中。</p>
+            <p><span class="lbl">#2 话术输出 25Q4</span>✅ 已完成 · sigma · 有影响但很小。原因：RTA 帮助客户从广告大盘获取流量，竞价主要和其他行业客户竞争，历史数据分析显示 98%+ 流量是跨行业竞争。</p>
+            <p><span class="lbl">#2 2026Q2</span>✅ 已完成。</p>
+            <p><span class="lbl">#3 Agent 营销探索 25Q4</span>✅ 已完成 · bonnie · 面向自建 CDP 客户推进 Agent 套件（含 CA Agent）。</p>
+            <p><span class="lbl">#3 2026Q2</span>✅ 已完成 · 客户已自研：兴趣岛、红松。</p>
           </div>
         </details>
       </div>
@@ -666,7 +967,7 @@ details.todo-detail .detail-body .lbl {
       <div class="bucket-body">
         <table class="todo-table">
           <thead>
-            <tr><th class="col-no">#</th><th class="col-action">关键决策 · 关键行动</th><th class="col-owner">负责人</th><th class="col-q2">2026 Q2 跟进</th><th class="col-judge">判定</th></tr>
+            <tr><th class="col-no">#</th><th class="col-action">关键决策 · 关键行动</th><th class="col-owner">负责人</th><th class="col-q2">跟进结论</th><th class="col-judge">判定</th></tr>
           </thead>
           <tbody>
             <tr>
@@ -681,7 +982,12 @@ details.todo-detail .detail-body .lbl {
         <details class="todo-detail">
           <summary>展开 1203 节点完成情况</summary>
           <div class="detail-body">
-            <p><span class="lbl">#11 1203</span>跟进中。产品团队已输出初步测试方案，前场与客户跟进反馈。</p>
+        <details class="todo-detail">
+          <summary>展开节点完成情况与交付物</summary>
+          <div class="detail-body">
+            <p><span class="lbl">#11 25Q4</span>🟡 跟进中 · royszhang / sigma · 产品团队已输出初步测试方案，前场与客户跟进反馈中。</p>
+            <p><span class="lbl">#11 2026Q2</span>🟡 跟进中 · 客户反馈 RTA 效果一般，不做考虑。</p>
+            <p><span class="lbl">#11 跟进结论</span>核桃编程 RTA 暂搁置。</p>
           </div>
         </details>
       </div>
@@ -698,7 +1004,7 @@ details.todo-detail .detail-body .lbl {
       <div class="bucket-body">
         <table class="todo-table">
           <thead>
-            <tr><th class="col-no">#</th><th class="col-action">关键决策 · 关键行动</th><th class="col-owner">负责人</th><th class="col-q2">2026 Q2 跟进</th><th class="col-judge">判定</th></tr>
+            <tr><th class="col-no">#</th><th class="col-action">关键决策 · 关键行动</th><th class="col-owner">负责人</th><th class="col-q2">跟进结论</th><th class="col-judge">判定</th></tr>
           </thead>
           <tbody>
             <tr>
@@ -706,12 +1012,12 @@ details.todo-detail .detail-body .lbl {
               <td class="col-action">
                 <b>FA 轻量版工具推进</b>
                 <div style="margin-top:6px;color:var(--text-2);font-size:12.5px;line-height:1.8;">
-                  <div>① AI 初创企业客户清单输出（manizhao）</div>
+                  <div>① AI 初创企业客户清单输出（adamsychen）</div>
                   <div>② 竞品策略输出（bonnie）</div>
                   <div>③ 泛互赢单经验分享（benjamin）</div>
                 </div>
               </td>
-              <td class="col-owner">manizhao / bonnie / benjamin</td>
+              <td class="col-owner">adamsychen / bonnie / benjamin</td>
               <td class="col-q2">3 项子动作已全部完成：清单对齐、竞品策略输出、与 AI 原生组完成 winback 专项分享；<b>暂无客户转化</b></td>
               <td class="col-judge"><span class="judge warn">🟡 持续跟进</span></td>
             </tr>
@@ -726,7 +1032,7 @@ details.todo-detail .detail-body .lbl {
               <span class="seg-name">教育服务商</span>
               <span class="seg-desc">为企业通过 AI 来提供数字人、教案或者教学交互等服务，通常没有自己通用的软件系统</span>
             </div>
-            <div class="seg-ratio">重点赛道 1/6</div>
+            <div class="seg-ratio">客户数量 1/6</div>
             <div class="seg-judge"><span class="judge gray">⚪ 无需求</span></div>
           </div>
           <div class="segment-row">
@@ -734,7 +1040,7 @@ details.todo-detail .detail-body .lbl {
               <span class="seg-name">有 C 端产品、有需求但没来得及推进</span>
               <span class="seg-desc">客户有需求，但前期有优先级更高的事项推进</span>
             </div>
-            <div class="seg-ratio">1/3</div>
+            <div class="seg-ratio">客户数量 1/3</div>
             <div class="seg-judge"><span class="judge good">🟢 保持跟进</span></div>
           </div>
           <div class="segment-row">
@@ -748,7 +1054,7 @@ details.todo-detail .detail-body .lbl {
           <div class="segment-row">
             <div>
               <span class="seg-name">客户暂无 C 端产品</span>
-              <span class="seg-desc">—</span>
+              <span class="seg-desc">客户暂无 C 端产品或者大部分目前处于早期功能设计界定阶段，处于拉群或者其他直接内测反馈阶段</span>
             </div>
             <div class="seg-ratio">—</div>
             <div class="seg-judge"><span class="judge gray">⚪ 短期需求不高</span></div>
@@ -757,15 +1063,18 @@ details.todo-detail .detail-body .lbl {
 
         <!-- 总结 -->
         <div class="insight-summary">
-          <span class="lbl">小结</span>4 类客户中仅"有 C 端产品、有需求"这一类（约 1/3）可跟进，其余 3 类短期内需求不高或无需求。3 项子动作已完成但暂无转化，<b>保持跟进</b>。
+          <span class="lbl">小结</span>4 类客户中仅"有 C 端产品、有需求"这一类（约 1/3）可跟进，其余 3 类短期内需求不高或无需求。3 项子动作已完成，<b>持续跟进</b>。
         </div>
 
         <details class="todo-detail">
-          <summary>展开 1203 节点完成情况与交付物</summary>
+          <summary>展开节点完成情况与交付物</summary>
           <div class="detail-body">
-            <p><span class="lbl">① 1203</span>跟进中。准备企点 winback 专项分享，待客户清单确认后统一打单策略。</p>
-            <p><span class="lbl">② 1203</span>待开始 → Q2 已完成。</p>
-            <p><span class="lbl">③ 1203</span>待开始 → Q2 已完成分享但 0 转化。</p>
+            <p><span class="lbl">#4 客户清单 25Q4</span>🟡 跟进中 · adamsychen · 准备企点 winback 专项分享中，待客户清单确认后，统一分享打单策略及方案。</p>
+            <p><span class="lbl">#4 2026Q2</span>✅ 已完成。</p>
+            <p><span class="lbl">#5 竞品策略 25Q4</span>✅ 已完成 · bonnie。</p>
+            <p><span class="lbl">#5 2026Q2</span>✅ 已完成。</p>
+            <p><span class="lbl">#6 泛互赢单经验 25Q4</span>✅ 已完成 · benjamin。</p>
+            <p><span class="lbl">#6 2026Q2</span>✅ 已完成 · 已与 AI 原生组完成 winback 专项分享，持续跟进中。</p>
           </div>
         </details>
       </div>
@@ -781,19 +1090,19 @@ details.todo-detail .detail-body .lbl {
       </li>
       <li>
         <span class="ttl">K12 三条主线"差一口气"，需 reset 打法</span>
-        <span class="desc">RTA 标杆猿辅导已签但消耗低（受寒暑假 + 客户效果预期严苛影响）；行业模型输出但暂无标杆突破；语言培训样本数据支持难；CDP winback 仅成功 1 家。建议本次 Workshop 重新对齐 K12 节奏与目标。</span>
+        <span class="desc">RTA 标杆猿辅导已签但消耗低（受寒暑假 + 客户效果预期严苛影响）；行业模型暂无标杆突破；语言培训消耗偏低；CDP/FA winback 3 家。</span>
       </li>
       <li>
-        <span class="ttl">AI 初创动作全部完成，持续跟进</span>
+        <span class="ttl">AI 初创探索培训 / 方案已完成，持续跟进</span>
         <span class="desc">客户清单 / 竞品策略 / 泛互赢单经验分享 3 条 todo 全部落地。4 类客户中仅"有 C 端产品、有需求"这一类（约 1/3）可跟进，其余 3 类短期内需求不高或无需求。</span>
       </li>
       <li>
         <span class="ttl">素质 / 职教编程 RTA 推进难度大</span>
-        <span class="desc">核桃编程 RTA 客户反馈效果一般。释放 sigma / royszhang 精力到 K12 行业模型重点突破方向。</span>
+        <span class="desc">核桃编程 RTA 客户反馈效果一般，暂不推进。</span>
       </li>
       <li>
-        <span class="ttl">高教是新增量方向，方案 + 课程已就位（独立总结）</span>
-        <span class="desc">高教专项突破方案、课程输出全部完成，<b>深大、深信息持续攻破中</b>。3 条 todo（方案 #12 / 客户清单 #13 / 课程 #14）全部 🟢 推进良好。</span>
+        <span class="ttl">高教新方向，独立总结</span>
+        <span class="desc">高教专项突破方案，方案已完成、课程完成 80%；深大、深信息持续攻破中。下一步联动证书推进入校。</span>
       </li>
     </ul>
   </div>
