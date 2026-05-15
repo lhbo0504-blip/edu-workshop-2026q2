@@ -763,6 +763,93 @@ details.todo-detail .detail-body .lbl {
     </div>
   </div>
 
+  <!-- 2026 收入冲刺路径图（接在跟进总结后） -->
+  <div class="card">
+    <div style="margin:0;text-align:center;">
+      <svg viewBox="0 0 680 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:760px;height:auto;font-family:-apple-system,'PingFang SC','Microsoft YaHei',sans-serif;background:#fff;">
+
+        <!-- Y 轴刻度网格 -->
+        <g stroke="#E5E7EB" stroke-width="1">
+          <line x1="80" y1="80" x2="660" y2="80"/>
+          <line x1="80" y1="138" x2="660" y2="138"/>
+          <line x1="80" y1="196" x2="660" y2="196"/>
+          <line x1="80" y1="254" x2="660" y2="254"/>
+          <line x1="80" y1="312" x2="660" y2="312"/>
+          <line x1="80" y1="370" x2="660" y2="370"/>
+          <line x1="80" y1="420" x2="660" y2="420"/>
+        </g>
+
+        <!-- Y 轴标签 -->
+        <g font-size="11" fill="#888" text-anchor="end">
+          <text x="74" y="84">¥1200W</text>
+          <text x="74" y="142">¥1000W</text>
+          <text x="74" y="200">¥800W</text>
+          <text x="74" y="258">¥600W</text>
+          <text x="74" y="316">¥400W</text>
+          <text x="74" y="374">¥200W</text>
+          <text x="74" y="424">¥0W</text>
+        </g>
+
+        <!-- 冲刺目标 1000W 红虚线 -->
+        <line x1="80" y1="138" x2="660" y2="138" stroke="#C8453D" stroke-width="1.5" stroke-dasharray="6,4"/>
+        <text x="86" y="132" font-size="12" fill="#C8453D" font-weight="600">冲刺目标 ¥1000W</text>
+
+        <!-- 预估线 422.7W 橙虚线 -->
+        <line x1="80" y1="300.2" x2="660" y2="300.2" stroke="#D98E1F" stroke-width="1.5" stroke-dasharray="6,4"/>
+        <text x="86" y="294" font-size="12" fill="#D98E1F" font-weight="600">预估线 ¥422.7W</text>
+
+        <!-- 柱 1: 2024 ¥35.8W -->
+        <rect x="160" y="409.9" width="80" height="10.1" fill="#285EF6" rx="2"/>
+        <text x="200" y="400" font-size="13" fill="#285EF6" font-weight="600" text-anchor="middle">¥35.8W</text>
+
+        <!-- 柱 2: 2025 ¥389W -->
+        <rect x="320" y="309.8" width="80" height="110.2" fill="#285EF6" rx="2"/>
+        <text x="360" y="300" font-size="13" fill="#285EF6" font-weight="600" text-anchor="middle">¥389W</text>
+
+        <!-- 柱 3: 2026 堆叠 -->
+        <rect x="480" y="136.8" width="80" height="163.5" fill="#C9CDD4"/>
+        <rect x="480" y="300.3" width="80" height="76.2" fill="#7AA0F8"/>
+        <rect x="480" y="376.5" width="80" height="43.5" fill="#1a4cd8" rx="2"/>
+
+        <!-- 2026 顶端总额 -->
+        <text x="520" y="128" font-size="14" fill="#1a1a1a" font-weight="700" text-anchor="middle">¥1000W</text>
+
+        <!-- 段标签 引线 + 黑字 -->
+        <line x1="560" y1="218" x2="582" y2="218" stroke="#888" stroke-width="1"/>
+        <text x="586" y="222" font-size="13" fill="#1a1a1a" font-weight="600">增量 +¥577.3W</text>
+
+        <line x1="560" y1="338" x2="582" y2="338" stroke="#888" stroke-width="1"/>
+        <text x="586" y="342" font-size="13" fill="#1a1a1a" font-weight="600">存量预估 +¥269W</text>
+
+        <line x1="560" y1="398" x2="582" y2="398" stroke="#888" stroke-width="1"/>
+        <text x="586" y="402" font-size="13" fill="#1a1a1a" font-weight="600">现有 ¥153.7W</text>
+
+        <!-- X 轴 -->
+        <line x1="80" y1="420" x2="660" y2="420" stroke="#3d3d3d" stroke-width="1.5"/>
+
+        <!-- X 轴标签 -->
+        <g font-size="13" fill="#1a1a1a" text-anchor="middle" font-weight="500">
+          <text x="200" y="445">2024 全年</text>
+          <text x="360" y="445">2025 全年</text>
+          <text x="520" y="445">2026 (目标)</text>
+        </g>
+
+        <!-- 图例 -->
+        <g font-size="11.5" fill="#555">
+          <rect x="80" y="465" width="14" height="10" fill="#C9CDD4" rx="1"/>
+          <text x="100" y="474">2026 增量</text>
+          <rect x="170" y="465" width="14" height="10" fill="#7AA0F8" rx="1"/>
+          <text x="190" y="474">2026 存量预估</text>
+          <rect x="276" y="465" width="14" height="10" fill="#1a4cd8" rx="1"/>
+          <text x="296" y="474">2026 现有</text>
+          <rect x="370" y="465" width="14" height="10" fill="#285EF6" rx="1"/>
+          <text x="390" y="474">2024 / 2025 历史</text>
+        </g>
+
+      </svg>
+    </div>
+  </div>
+
   <!-- 1. 顶层 4 赛道综述（与下方 bucket 一一对应）-->
   <div class="card">
     <div class="card-title">4 赛道综述</div>
